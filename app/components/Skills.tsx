@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useRef } from "react";
 
 const cats = [
@@ -7,52 +6,43 @@ const cats = [
   { title: "Backend",  icon: "◎", skills: [{ n: "Node.js / Express", p: 87 }, { n: "REST APIs", p: 90 }, { n: "GraphQL", p: 75 }, { n: "Python / FastAPI", p: 70 }] },
   { title: "Database", icon: "◆", skills: [{ n: "PostgreSQL", p: 83 }, { n: "MongoDB", p: 85 }, { n: "Redis", p: 72 }, { n: "Prisma ORM", p: 80 }] },
 ];
-
 const tags = ["Next.js","React","TypeScript","Node.js","Express","PostgreSQL","MongoDB","Redis","Docker","AWS","Vercel","Git","GraphQL","Tailwind","Prisma","JWT","CI/CD","REST API","Linux","Figma"];
 
 export default function Skills() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
+  const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const obs = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (e.isIntersecting) {
-          e.target.querySelectorAll<HTMLElement>(".sbar").forEach((bar) => {
-            bar.style.width = bar.dataset.w ?? "0%";
-          });
+          e.target.querySelectorAll<HTMLElement>(".sbar").forEach((b) => { b.style.width = b.dataset.w ?? "0%"; });
         }
       });
     }, { threshold: 0.2 });
-    if (sectionRef.current) obs.observe(sectionRef.current);
+    if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
   }, []);
 
   return (
-    <section id="skills" ref={sectionRef} style={{ position: "relative", padding: "8rem 0", background: "#0d0d0d", overflow: "hidden" }}>
-      <div style={{ position: "absolute", top: "3rem", right: "2rem", fontFamily: "var(--font-syne),sans-serif", fontWeight: 800, fontSize: "8rem", color: "#1a1a1a", lineHeight: 1, pointerEvents: "none", userSelect: "none" }}>02</div>
+    <section id="skills" ref={ref} style={{ position: "relative", padding: "8rem 0", background: "#0d0d0d", overflow: "hidden" }}>
+      <div style={{ position: "absolute", top: "3rem", right: "2rem", fontFamily: "var(--font-syne),sans-serif", fontWeight: 800, fontSize: "clamp(4rem,12vw,8rem)", color: "#1a1a1a", lineHeight: 1, pointerEvents: "none", userSelect: "none" }}>02</div>
 
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 2rem", position: "relative", zIndex: 1 }}>
-
-        {/* Label */}
-        <div className="reveal" style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "3.5rem" }}>
-          <span style={{ fontFamily: "var(--font-dm-mono),monospace", fontSize: "0.7rem", color: "#caff33", textTransform: "uppercase", letterSpacing: "0.15em" }}>// 02</span>
-          <span style={{ height: "1px", background: "#242424", width: "60px" }} />
+      <div className="section-inner">
+        <div className="sec-label">
+          <span style={{ fontFamily: "var(--font-dm-mono),monospace", fontSize: "0.7rem", color: "#caff33", textTransform: "uppercase", letterSpacing: "0.15em" }}> // 02</span>
+          <span style={{ height: "1px", background: "#242424", width: "60px", display: "block" }} />
           <span style={{ fontFamily: "var(--font-dm-mono),monospace", fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.15em", color: "#888" }}>Skills</span>
         </div>
 
-        <div className="reveal">
-          <h2 style={{ fontFamily: "var(--font-syne),sans-serif", fontWeight: 800, fontSize: "clamp(1.8rem,3.5vw,3rem)", color: "#f0ede6", marginBottom: "0.75rem" }}>
-            Technologies I <span style={{ color: "#caff33" }}>master</span>
-          </h2>
-          <p style={{ fontFamily: "var(--font-dm-mono),monospace", fontSize: "0.82rem", color: "#888", maxWidth: "460px", marginBottom: "3rem" }}>
-            A curated stack built through real-world projects and continuous learning.
-          </p>
-        </div>
+        <h2 style={{ fontFamily: "var(--font-syne),sans-serif", fontWeight: 800, fontSize: "clamp(1.8rem,4vw,3.5rem)", color: "#f0ede6", marginBottom: "0.75rem" }}>
+          Technologies I <span style={{ color: "#caff33" }}>master</span>
+        </h2>
+        <p style={{ fontFamily: "var(--font-dm-mono),monospace", fontSize: "0.82rem", color: "#888", maxWidth: "460px", marginBottom: "3rem" }}>
+          A curated stack built through real-world projects and continuous learning.
+        </p>
 
-        {/* Skill cards grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1.5rem", marginBottom: "4rem" }}>
-          {cats.map((cat, ci) => (
-            <div key={cat.title} className={`reveal d${ci + 1}`}
+        <div className="skills-grid">
+          {cats.map((cat) => (
+            <div key={cat.title}
               style={{ background: "#111", border: "1px solid #242424", padding: "1.5rem", transition: "border-color 0.3s" }}
               onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(202,255,51,0.3)")}
               onMouseLeave={(e) => (e.currentTarget.style.borderColor = "#242424")}
@@ -78,8 +68,7 @@ export default function Skills() {
           ))}
         </div>
 
-        {/* Tech tags */}
-        <div className="reveal d4">
+        <div>
           <div style={{ fontFamily: "var(--font-dm-mono),monospace", fontSize: "0.65rem", textTransform: "uppercase", letterSpacing: "0.15em", color: "#555", marginBottom: "1rem" }}>Full Tech Stack</div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
             {tags.map((t) => (

@@ -1,0 +1,153 @@
+/* ═══════════════════════════════════════════════
+   RESPONSIVE LAYOUT SYSTEM
+   All layout classes used across components
+═══════════════════════════════════════════════ */
+
+/* ── Section wrapper ── */
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Two-column grid (About, Contact) ── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+/* ── Three-column grid (Skills, Values) ── */
+.three-col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* ── Projects grid ── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: #1a1a1a;
+  border: 1px solid #1a1a1a;
+}
+
+/* ── Quick facts (2 cols) ── */
+.facts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+/* ── Values grid ── */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+}
+
+/* ── Skills category grid ── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+/* ── Footer top ── */
+.footer-top-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* ── Hero stats ── */
+.hero-stats {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+/* ── Hero buttons ── */
+.hero-btns {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 4rem;
+}
+
+/* ── Project filter ── */
+.proj-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ── Section label ── */
+.sec-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
+}
+
+/* ══════════════════════════════════════════════
+   TABLET  ≤ 1024px
+══════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .two-col      { grid-template-columns: 1fr; gap: 3rem; }
+  .three-col    { grid-template-columns: repeat(2, 1fr); }
+  .skills-grid  { grid-template-columns: repeat(2, 1fr); }
+  .projects-grid{ grid-template-columns: repeat(2, 1fr); }
+  .values-grid  { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ══════════════════════════════════════════════
+   MOBILE  ≤ 640px
+══════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .section-inner      { padding: 0 1.25rem; }
+  .two-col            { grid-template-columns: 1fr; gap: 2.5rem; }
+  .three-col          { grid-template-columns: 1fr; }
+  .skills-grid        { grid-template-columns: 1fr; }
+  .projects-grid      { grid-template-columns: 1fr; }
+  .values-grid        { grid-template-columns: 1fr; }
+  .facts-grid         { grid-template-columns: 1fr 1fr; }
+  .hero-stats         { gap: 1.5rem; }
+  .footer-top-inner   { flex-direction: column; align-items: flex-start; gap: 2rem; }
+  .footer-nav-links   { flex-wrap: wrap; gap: 1rem; }
+  .proj-header        { flex-direction: column; align-items: flex-start; }
+}
+
+/* ══════════════════════════════════════════════
+   SMALL MOBILE  ≤ 400px
+══════════════════════════════════════════════ */
+@media (max-width: 400px) {
+  .section-inner { padding: 0 1rem; }
+  .facts-grid    { grid-template-columns: 1fr; }
+  .hero-btns     { flex-direction: column; }
+  .hero-btns button,
+  .hero-btns a   { width: 100%; text-align: center; }
+}
